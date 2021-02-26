@@ -26,9 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = BookstoreApplicationTest.class)
+@withMockUser(usrname = "admin", roles = {"USER", "ADMIN"})
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = BookstoreApplicationTest.class, properties = {"command.line.runner=false"})
 @AutoConfigureMockMvc
-public class BookControllerUnitTestNoDB
+public class  BookControllerUnitTestNoDB
 {
     @Autowired
     private WebApplicationContext webApplicationContext;
