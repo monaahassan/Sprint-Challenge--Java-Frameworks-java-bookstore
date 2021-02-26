@@ -45,26 +45,17 @@ public class ResourceServerConfig
         // hasAnyRole = must be authenticated and be assigned this role!
         http.authorizeRequests()
                 .antMatchers("/",
-                             "/h2-console/**",
-                             "/swagger-resources/**",
-                             "/swagger-resource/**",
-                             "/swagger-ui.html",
-                             "/v2/api-docs",
-                             "/webjars/**",
-                             "/createnewuser")
+                        "/h2-console/**",
+                        "/swagger-resources/**",
+                        "/swagger-resource/**",
+                        "/swagger-ui.html",
+                        "/v2/api-docs",
+                        "/webjars/**",
+                        "/createnewuser")
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/books/book")
-                .hasAnyRole("ADMIN", "USER", "DATA")
-                .antMatchers(HttpMethod.GET, "/books/book/{id}")
-                .hasAnyRole("ADMIN", "USER", "DATA")
-                .antMatchers(HttpMethod.POST, "/books/book")
-                .hasAnyRole("ADMIN")
-                .antMatchers(HttpMethod.PUT, "/books/book/{id}")
-                .hasAnyRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/books/book/{id}")
-                .hasAnyRole("ADMIN", "USER", "DATA")
                 .antMatchers("/users/**",
                         "/useremails/**",
+                        "/books/**",
                         "/oauth/revoke-token",
                         "/logout")
                 .authenticated()
